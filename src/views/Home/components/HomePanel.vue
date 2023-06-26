@@ -1,0 +1,61 @@
+<script setup>
+//定义props(defineProps是自带的，无需引入，后面跟着一对小括号，里面放一堆对象，所以小括号里带着花括号)
+defineProps({
+  // 主标题
+
+  title: {
+    type: String,
+  },
+  // 副标题
+  subTitle: {
+    type: String,
+  },
+});
+</script>
+
+
+<template>
+  <div class="home-panel">
+    <div class="container">
+      <div class="head">
+        <!-- 主标题和副标题 -->
+        <h3>
+          {{ title }}<small> {{ subTitle }}</small>
+        </h3>
+      </div>
+      <!-- 主体内容区域 -->
+      <!-- <div>主体内容</div> -->
+      <!-- 主体内容是复杂的模板，抽象成插槽传入,总共只需要一块插槽，所以可以直接使用默认的；
+      插槽，默认的插槽，内置的组件，为slot，需要手动打进去
+     -->
+      <slot />
+    </div>
+  </div>
+</template>
+
+<style scoped lang='scss'>
+.home-panel {
+  background-color: #fff;
+
+  .head {
+    padding: 40px 0;
+    display: flex;
+    align-items: flex-end;
+
+    h3 {
+      flex: 1;
+      font-size: 32px;
+      font-weight: normal;
+      margin-left: 6px;
+      height: 35px;
+      line-height: 35px;
+
+      small {
+        font-size: 16px;
+        color: #999;
+        margin-left: 20px;
+      }
+    }
+  }
+}
+</style>
